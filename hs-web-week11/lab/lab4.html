@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>11주차 실습 4</title>
+  <title>11주차 실습 4 모범답안</title>
   <style>
     body { font-family: system-ui, sans-serif; line-height: 1.7; padding: 16px; }
     .note { padding: 10px 12px; border-left: 4px solid #102A56; background: #eef2fb; }
@@ -13,7 +13,7 @@
 </head>
 <body>
   <p class="note">
-    <strong>11주차 실습 4</strong><br>
+    <strong>11주차 실습 4 모범답안</strong><br>
     결과는 개발자도구 <strong>콘솔</strong>에서 봅니다 — F12 또는 Ctrl+Shift+I (Mac은 Cmd+Option+I).
   </p>
 
@@ -39,13 +39,25 @@
 
   <script>
     /*
-    실습 4 · 심화
-
-    문제: 상품 배열에서 ① 총 재고 금액 ② 재고가 0인 상품 이름 ③ 가장 비싼 상품을 구해 출력하세요. 상품은 id·name·price·stock을 가집니다.
-    힌트: reduce로 합계, filter로 품절, sort나 reduce로 최고가를 구합니다. 원본을 정렬하지 않도록 복사해서 정렬하세요.
-    꼭 들어가야 하는 것: .reduce(  .filter(  stock === 0|stock===0  .sort(  ...products|[...
+    실습 4 모범답안 — 스스로 해 본 뒤에 보세요
     */
-    // 여기에 JavaScript를 작성하세요
+    const products = [
+      { id: 1, name: '노트북', price: 1200000, stock: 5 },
+      { id: 2, name: '마우스', price: 25000, stock: 0 },
+      { id: 3, name: '노트', price: 3000, stock: 42 },
+    ];
+
+    // ① 총 재고 금액
+    const totalValue = products.reduce((sum, p) => sum + p.price * p.stock, 0);
+    console.log('총 재고 금액:', totalValue.toLocaleString() + '원');
+
+    // ② 품절 상품
+    const soldOut = products.filter(p => p.stock === 0).map(p => p.name);
+    console.log('품절:', soldOut);
+
+    // ③ 가장 비싼 상품 (원본을 건드리지 않으려고 복사 후 정렬)
+    const priciest = [...products].sort((a, b) => b.price - a.price)[0];
+    console.log('최고가:', priciest.name);
   </script>
 </body>
 </html>
