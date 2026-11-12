@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>11주차 예제 2 · 요즘 더 많이 쓰는 모양</title>
+  <title>11주차 실습 2 모범답안</title>
   <style>
     body { font-family: system-ui, sans-serif; line-height: 1.7; padding: 16px; }
     .note { padding: 10px 12px; border-left: 4px solid #102A56; background: #eef2fb; }
@@ -13,7 +13,7 @@
 </head>
 <body>
   <p class="note">
-    <strong>11주차 예제 2 · 요즘 더 많이 쓰는 모양</strong><br>
+    <strong>11주차 실습 2 모범답안</strong><br>
     결과는 개발자도구 <strong>콘솔</strong>에서 봅니다 — F12 또는 Ctrl+Shift+I (Mac은 Cmd+Option+I).
   </p>
 
@@ -39,28 +39,17 @@
 
   <script>
     /*
-    11주차 예제 2 — 요즘 더 많이 쓰는 모양
+    실습 2 모범답안 — 스스로 해 본 뒤에 보세요
     */
-    // 함수 선언
-    function add(a, b) { return a + b; }
+    const scores = [95, 42, 88, 67, 55];
 
-    // 함수 표현식
-    const add2 = function (a, b) { return a + b; };
+    const passed = scores.filter(s => s >= 60);
+    const sum = passed.reduce((acc, s) => acc + s, 0);
+    const avg = sum / passed.length;
 
-    // 화살표 함수
-    const add3 = (a, b) => { return a + b; };
-
-    // 몸통이 return 하나면 중괄호와 return을 생략할 수 있습니다
-    const add4 = (a, b) => a + b;
-
-    // 매개변수가 하나면 괄호도 생략 가능 (팀 관례에 따라 붙이기도 합니다)
-    const double = n => n * 2;
-
-    // 매개변수가 없으면 빈 괄호
-    const now = () => new Date();
-
-    // 객체를 돌려줄 때는 괄호로 감쌉니다 — 안 그러면 중괄호를 몸통으로 봅니다
-    const makeUser = (name) => ({ name, year: 1 });
+    console.log('합격:', passed);
+    console.log('인원:', passed.length);
+    console.log('평균:', avg.toFixed(1));
   </script>
 </body>
 </html>
