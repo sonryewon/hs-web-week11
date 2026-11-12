@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>11주차 실습 3</title>
+  <title>학생 데이터 필터링 실습</title>
   <style>
     body { font-family: system-ui, sans-serif; line-height: 1.7; padding: 16px; }
     .note { padding: 10px 12px; border-left: 4px solid #102A56; background: #eef2fb; }
@@ -13,39 +13,49 @@
 </head>
 <body>
   <p class="note">
-    <strong>11주차 실습 3</strong><br>
+    <strong>배열 메서드 체이닝(Chaining) 실습 응용</strong><br>
     결과는 개발자도구 <strong>콘솔</strong>에서 봅니다 — F12 또는 Ctrl+Shift+I (Mac은 Cmd+Option+I).
   </p>
 
   <div class="sandbox">
     <h2>연습용 화면 — 아래 코드가 손댈 요소들입니다. 마음대로 고쳐 보세요.</h2>
-    <h1 id="title">제목 h1</h1>
-    <p id="name">이름</p>
-    <p id="price">12000</p>
-    <div class="box">div.box</div>
+    <h1 id="title">스터디 그룹 멤버 조회</h1>
+    <p id="name">대표: 손례원</p>
+    <p id="price">월 회비: 15000</p>
+    <div class="box">멤버 목록</div>
 
     <ul id="list" class="list">
-      <li>목록 1</li>
-      <li>목록 2</li>
-      <li>목록 3</li>
+      <li>손례원</li>
+      <li>홍준석</li>
+      <li>이태민</li>
     </ul>
 
     <form id="myForm">
-      <input type="text" name="name" placeholder="이름">
-      <label><input type="checkbox" id="agree"> 동의합니다</label>
-      <button type="button" id="btn">버튼</button>
+      <input type="text" name="name" placeholder="검색할 이름">
+      <label><input type="checkbox" id="agree"> 개인정보 활용 동의</label>
+      <button type="button" id="btn">조회하기</button>
     </form>
   </div>
 
   <script>
     /*
-    실습 3 · 응용
-
-    문제: 학생 객체 배열을 만들고(이름·학년·점수 3명 이상), 1학년만 골라 이름만 뽑은 뒤 쉼표로 이어 출력하세요.
-    힌트: filter → map → join 을 이어서 씁니다. 체이닝이라고 부릅니다.
-    꼭 들어가야 하는 것: .filter(  .map(  .join(  year === 1|year===1
+    실습 3 응용 — filter와 map을 연결해서 사용하기
     */
-    // 여기에 JavaScript를 작성하세요
+    const students = [
+      { name: '손례원', year: 1, score: 95 },
+      { name: '홍준석', year: 2, score: 85 },
+      { name: '이태민', year: 1, score: 92 },
+      { name: '박지민', year: 3, score: 78 },
+      { name: '최동훈', year: 1, score: 88 }
+    ];
+
+    // 1학년 학생만 필터링한 후, 이름만 추출하여 쉼표로 연결
+    const freshmen = students
+      .filter(s => s.year === 1)
+      .map(s => s.name)
+      .join(', ');
+
+    console.log('1학년 명단:', freshmen);
   </script>
 </body>
 </html>
