@@ -56,4 +56,8 @@
     console.log('품절:', soldOut);
 
     // ③ 가장 비싼 상품 (원본을 건드리지 않으려고 복사 후 정렬)
-    const priciest = [...products].sort((
+    const priciest = [...products].sort((a, b) => b.price - a.price)[0];
+    console.log('최고가:', priciest.name);
+  </script>
+</body>
+</html>
