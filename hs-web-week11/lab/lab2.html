@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>11주차 실습 2 모범답안</title>
+  <title>학생 성적 관리 시스템 실습</title>
   <style>
     body { font-family: system-ui, sans-serif; line-height: 1.7; padding: 16px; }
     .note { padding: 10px 12px; border-left: 4px solid #102A56; background: #eef2fb; }
@@ -13,43 +13,56 @@
 </head>
 <body>
   <p class="note">
-    <strong>11주차 실습 2 모범답안</strong><br>
+    <strong>배열 메서드 및 DOM 실습 응용</strong><br>
     결과는 개발자도구 <strong>콘솔</strong>에서 봅니다 — F12 또는 Ctrl+Shift+I (Mac은 Cmd+Option+I).
   </p>
 
   <div class="sandbox">
     <h2>연습용 화면 — 아래 코드가 손댈 요소들입니다. 마음대로 고쳐 보세요.</h2>
-    <h1 id="title">제목 h1</h1>
-    <p id="name">이름</p>
-    <p id="price">12000</p>
-    <div class="box">div.box</div>
+    <h1 id="title">학생 관리 페이지</h1>
+    <p id="name">조장: 이태민</p>
+    <p id="price">운영비: 25000</p>
+    <div class="box">스터디 그룹 멤버 명단</div>
 
     <ul id="list" class="list">
-      <li>목록 1</li>
-      <li>목록 2</li>
-      <li>목록 3</li>
+      <li>이태민</li>
+      <li>홍준석</li>
+      <li>손례원</li>
     </ul>
 
     <form id="myForm">
-      <input type="text" name="name" placeholder="이름">
-      <label><input type="checkbox" id="agree"> 동의합니다</label>
-      <button type="button" id="btn">버튼</button>
+      <input type="text" name="name" placeholder="신규 멤버 이름">
+      <label><input type="checkbox" id="agree"> 스터디 규칙 동의</label>
+      <button type="button" id="btn">추가하기</button>
     </form>
   </div>
 
   <script>
     /*
-    실습 2 모범답안 — 스스로 해 본 뒤에 보세요
+    실습 2 응용 — 객체 배열을 활용한 filter, reduce 연산
     */
-    const scores = [95, 42, 88, 67, 55];
+    const students = [
+      { name: '이태민', score: 95 },
+      { name: '홍준석', score: 42 },
+      { name: '손례원', score: 88 },
+      { name: '강동원', score: 67 },
+      { name: '최지수', score: 55 }
+    ];
 
-    const passed = scores.filter(s => s >= 60);
-    const sum = passed.reduce((acc, s) => acc + s, 0);
+    // 60점 이상 합격자 필터링
+    const passed = students.filter(student => student.score >= 60);
+    
+    // 합격자 점수 총합
+    const sum = passed.reduce((acc, student) => acc + student.score, 0);
+    
+    // 합격자 평균 점수 계산
     const avg = sum / passed.length;
 
-    console.log('합격:', passed);
-    console.log('인원:', passed.length);
-    console.log('평균:', avg.toFixed(1));
+    // 콘솔 출력
+    console.log('전체 학생 리스트:', students);
+    console.log('합격자 명단:', passed.map(s => s.name).join(', '));
+    console.log('합격 인원:', passed.length + '명');
+    console.log('합격자 평균:', avg.toFixed(1) + '점');
   </script>
 </body>
 </html>
